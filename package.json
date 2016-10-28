@@ -7,5 +7,9 @@
     "type": "git"
   },
   "author": "Michael Zabka <zabka.michael@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://ci.hugport.com:4875",
+    "access": "public"
+  }
 }
