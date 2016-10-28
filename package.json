@@ -6,6 +6,9 @@
     "url": "git@github.com:misak113/hugport-codestyle",
     "type": "git"
   },
+  "scripts": {
+    "release": "yarn version --new-version patch && (yarn publish ; git push origin master --tags)"
+  },
   "author": "Michael Zabka <zabka.michael@gmail.com>",
   "license": "MIT",
   "publishConfig": {
