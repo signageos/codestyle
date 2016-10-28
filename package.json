@@ -7,7 +7,7 @@
     "type": "git"
   },
   "scripts": {
-    "release": "yarn version --new-version patch && (yarn publish ; git push origin master --tags)"
+    "release": "yarn version --new-version patch && (npm publish ; git push origin master --tags)"
   },
   "author": "Michael Zabka <zabka.michael@gmail.com>",
   "license": "MIT",
