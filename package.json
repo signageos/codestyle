@@ -1,6 +1,6 @@
 {
   "name": "hugport-codestyle",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "tslint.json",
   "repository": {
     "url": "git@github.com:misak113/hugport-codestyle",
