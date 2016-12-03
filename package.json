@@ -12,7 +12,7 @@
   "author": "Michael Zabka <zabka.michael@gmail.com>",
   "license": "MIT",
   "publishConfig": {
-    "registry": "https://ci.hugport.com:4875",
+    "registry": "https://npm.hugport.com",
     "access": "public"
   }
 }
