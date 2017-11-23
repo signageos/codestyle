@@ -1,3 +1,3 @@
-# Hugport CodeStyle
+# CodeStyle
 
-Code style for hugport services
+Code style for services
