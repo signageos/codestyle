@@ -69,6 +69,13 @@
       "always"
     ],
     "switch-default": true,
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "always",
+        "esSpecCompliant": true
+      }
+    ],
     "triple-equals": [
       true,
       "allow-null-check"
