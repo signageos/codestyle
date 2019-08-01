@@ -2,10 +2,6 @@
   "name": "hugport-codestyle",
   "version": "0.0.10",
   "main": "tslint.json",
-  "repository": {
-    "url": "git@github.com:misak113/hugport-codestyle",
-    "type": "git"
-  },
   "scripts": {
     "release": "yarn version --new-version patch && (npm publish ; git push origin master --tags)"
   },
