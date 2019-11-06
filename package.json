@@ -1,6 +1,6 @@
 {
   "name": "@signageos/codestyle",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "main": "tslint.json",
   "scripts": {
     "release": "yarn version --new-version patch && (npm publish ; git push origin master --tags)"
