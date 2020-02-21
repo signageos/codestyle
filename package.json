@@ -1,16 +1,28 @@
 {
   "name": "@signageos/codestyle",
   "version": "0.0.11",
-  "main": "tslint.json",
+  "main": ".eslintrc.json",
   "scripts": {
     "prepare": "echo OK",
     "test": "echo OK",
-    "lint": "echo OK"
+    "lint": "eslint .eslintrc.js"
   },
   "author": "Michael Zabka <zabka.michael@gmail.com>",
   "license": "MIT",
   "publishConfig": {
     "registry": "https://npm.signageos.io",
     "access": "public"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "2.20.0",
+    "@typescript-eslint/parser": "2.20.0",
+    "eslint": "6.8.0",
+    "eslint-config-standard": "14.1.0"
+  },
+  "devDependencies": {
+    "typescript": "3.8.2"
+  },
+  "peerDependencies": {
+    "typescript": ">=3.0.0"
   }
 }
