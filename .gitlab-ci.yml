@@ -1,40 +1,111 @@
-image: docker:latest
+image: $CI_REGISTRY/signageos/docker-node:12.16.0-alpine-build
+services:
+  - docker:dind
+
+stages:
+  - prepare
+  - test
+  - build
+  - publish
+  - release
 
 cache:
   untracked: true
   key: "$CI_PROJECT_ID"
   paths:
     - node_modules/
-    - .yarn-cache
 
-build:
+before_script:
+  - export VERSION=`cat ./VERSION`
+  - export TAG=$([ "$CI_COMMIT_TAG" == "" ] && echo $CI_COMMIT_REF_NAME || echo $(echo ${VERSION}-latest | sed -E 's/^[0-9]+.[0-9]+.[0-9]+-([a-zA-Z0-9]+)(\.[0-9]+)?(-[a-zA-Z0-9]+)?$/\1/p' | tail -n1))
+  - npx --userconfig ./.npmrc @signageos/lib version-upgrade $VERSION
+  - mkdir -p dist
+  - npm install --ignore-scripts
+
+prepare:
+  image: $CI_REGISTRY/signageos/docker:master
+  stage: prepare
+  before_script: []
+  script:
+    - ci-prepare
+  artifacts:
+    when: on_success
+    paths:
+      - ./VERSION
+
+test:general:
+  stage: test
   except:
     - tags
-  image: $CI_REGISTRY/signageos/docker-yarn:git
-  stage: build
   script:
-    - export TAG=`node tools/tag-by-branch $CI_COMMIT_REF_NAME`
-    - yarn config set cache-folder .yarn-cache
-    - yarn --tag $TAG
-    - if [ `find test* -type f -print0 | xargs -0 grep "\.only" | wc -l` -gt 0 ]; then echo "You forgot the .only in tests" && exit 1; fi
-    - export VERSION=`node tools/version-next-by-branch ${CI_COMMIT_REF_NAME} ${CI_JOB_ID}`
-    - node tools/version-upgrade $VERSION
-    - yarn run prepublish --production
+    - npm test
 
-    - npm set ${NPM_REGISTRY_URL/#*:/}:_authToken=$NPM_AUTH_TOKEN
+test:lint:
+  stage: test
+  except:
+    - tags
+  script:
+    - if [ `find test* -type f -print0 | xargs -0 grep "\.only" | wc -l` -gt 0 ]; then echo "You forgot the .only in tests" && exit 1; fi
+    - npm run lint
+
+test:changelog:
+  image: $CI_REGISTRY/signageos/docker:master
+  stage: test
+  except:
+    - tags
+  allow_failure: true
+  script:
+    - ci-test-changelog
+
+build:
+  stage: build
+  dependencies:
+    - prepare
+  script:
+    - npm run prepare --production
+  artifacts:
+    when: on_success
+    paths:
+      - dist/
+      - es6/
+
+publish:npm:
+  stage: publish
+  dependencies:
+    - prepare
+    - build
+  script:
     - npm publish --ignore-scripts --tag $TAG
 
-    - NPM_REGISTRY_URL=https://registry.npmjs.org/
-    - NPM_AUTH_TOKEN=$PUBLIC_NPM_AUTH_TOKEN
-    - npm set ${NPM_REGISTRY_URL/#*:/}:_authToken=$NPM_AUTH_TOKEN
+publish:npm-public:
+  stage: publish
+  only:
+    - tags
+  dependencies:
+    - prepare
+    - build
+  script:
+    - export NPM_REGISTRY_URL=https://registry.npmjs.org/
+    - export NPM_REGISTRY_HOST=registry.npmjs.org
+    - export NPM_AUTH_TOKEN=$PUBLIC_NPM_AUTH_TOKEN
     - tools/prepare-npm-public.sh
     - npm publish --ignore-scripts --tag $TAG
 
-    - >
-      if [ "$CI_COMMIT_REF_NAME" == "master" ]; then
-        git config user.email "$GITLAB_USER_EMAIL"
-        git config user.name "$GITLAB_USER_EMAIL"
-        git remote set-url origin ${CI_REPOSITORY_URL/"gitlab-ci-token:$CI_JOB_TOKEN"/"$CI_REPOSITORY_PUSH_USERNAME:$CI_REPOSITORY_PUSH_TOKEN"}
-        git tag v${VERSION} -a -m "$(git log --pretty="%s" `git describe --abbrev=0 --tags`...HEAD)"
-        git push origin refs/tags/v${VERSION}
-      fi
+release:tag:
+  image: $CI_REGISTRY/signageos/docker:master
+  stage: release
+  only:
+    - master
+  when: manual
+  allow_failure: false
+  before_script: []
+  script:
+    - ci-release-tag
+
+release:notes:
+  image: $CI_REGISTRY/signageos/docker:master
+  stage: release
+  only:
+    - tags
+  script:
+    - ci-release-notes
