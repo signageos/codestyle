@@ -47,6 +47,7 @@
     "no-require-imports": false,
     "no-shadowed-variable": true,
     "no-string-literal": true,
+    "no-non-null-assertion": true,
     "no-switch-case-fall-through": false,
     "no-trailing-whitespace": true,
     "no-unused-expression": true,
