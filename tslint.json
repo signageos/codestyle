@@ -48,6 +48,7 @@
     "no-shadowed-variable": true,
     "no-string-literal": true,
     "no-non-null-assertion": true,
+    "ban-ts-ignore": true,
     "no-switch-case-fall-through": false,
     "no-trailing-whitespace": true,
     "no-unused-expression": true,
