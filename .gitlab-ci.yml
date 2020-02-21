@@ -20,8 +20,16 @@ build:
     - export VERSION=`node tools/version-next-by-branch ${CI_COMMIT_REF_NAME} ${CI_JOB_ID}`
     - node tools/version-upgrade $VERSION
     - yarn run prepublish --production
+
     - npm set ${NPM_REGISTRY_URL/#*:/}:_authToken=$NPM_AUTH_TOKEN
     - npm publish --ignore-scripts --tag $TAG
+
+    - NPM_REGISTRY_URL=https://registry.npmjs.org/
+    - NPM_AUTH_TOKEN=$PUBLIC_NPM_AUTH_TOKEN
+    - npm set ${NPM_REGISTRY_URL/#*:/}:_authToken=$NPM_AUTH_TOKEN
+    - tools/prepare-npm-public.sh
+    - npm publish --ignore-scripts --tag $TAG
+
     - >
       if [ "$CI_COMMIT_REF_NAME" == "master" ]; then
         git config user.email "$GITLAB_USER_EMAIL"
