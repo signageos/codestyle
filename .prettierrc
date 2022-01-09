@@ -9,13 +9,11 @@
     "insertPragma": false,
     "proseWrap": "always",
     "arrowParens": "avoid",
-    "htmlWhitespaceSensitivity": "css",
     "endOfLine": "lf",
     "quoteProps": "as-needed",
     "vueIndentScriptAndStyle": true,
     "embeddedLanguageFormatting": "auto",
     "printWidth": 140,
-    "tabWidth": 2,
+    "tabWidth": 4,
     "useTabs": true
-  }
-  
+}
