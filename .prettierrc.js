@@ -4,13 +4,20 @@ module.exports = {
 	jsxSingleQuote: true,
 	trailingComma: 'all',
 	bracketSpacing: true,
-	parser: 'typescript',
 	requirePragma: false,
 	insertPragma: false,
 	proseWrap: 'always',
 	arrowParens: 'always',
 	quoteProps: 'as-needed',
-	printWidth: 140,
+	printWidth: 120,
 	tabWidth: 4,
 	useTabs: true,
+	overrides: [
+		{
+			files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
+			options: {
+				parser: 'typescript',
+			},
+		},
+	],
 };
