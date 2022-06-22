@@ -11,7 +11,6 @@ module.exports = {
 	quoteProps: 'as-needed',
 	printWidth: 120,
 	tabWidth: 4,
-	useTabs: true,
 	overrides: [
 		{
 			files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
