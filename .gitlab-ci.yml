@@ -5,7 +5,6 @@ cache:
   key: "$CI_PROJECT_ID"
   paths:
     - node_modules/
-    - .yarn-cache
 
 build:
   except:
@@ -13,19 +12,16 @@ build:
   stage: build
   script:
     - export TAG=`node tools/tag-by-branch $CI_COMMIT_REF_NAME`
-    - yarn config set cache-folder .yarn-cache
-    - yarn --tag $TAG
+    - npm install --tag $TAG
     - if [ `find test* -type f -print0 | xargs -0 grep "\.only" | wc -l` -gt 0 ]; then echo "You forgot the .only in tests" && exit 1; fi
-    - export VERSION=`node tools/version-next-by-branch ${CI_COMMIT_REF_NAME} ${CI_JOB_ID}`
+    - export VERSION=`node tools/version-next-by-prereleasetag ${TAG} ${CI_JOB_ID}`
     - node tools/version-upgrade $VERSION
-    - yarn run prepublish --production
 
-    - npm set ${NPM_REGISTRY_URL/#*:/}:_authToken=$NPM_AUTH_TOKEN
     - npm publish --ignore-scripts --tag $TAG
 
+    - NPM_REGISTRY_HOST=registry.npmjs.org
     - NPM_REGISTRY_URL=https://registry.npmjs.org/
     - NPM_AUTH_TOKEN=$PUBLIC_NPM_AUTH_TOKEN
-    - npm set ${NPM_REGISTRY_URL/#*:/}:_authToken=$NPM_AUTH_TOKEN
     - tools/prepare-npm-public.sh
     - npm publish --ignore-scripts --tag $TAG
 

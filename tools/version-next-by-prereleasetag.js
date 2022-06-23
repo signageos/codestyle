@@ -3,8 +3,8 @@ const child_process = require('child_process');
 const packagePath = __dirname + '/../package.json';
 const package = require(packagePath);
 
-const branch = process.argv[2];
-if (!branch) {
+const prereleaseTag = process.argv[2];
+if (!prereleaseTag) {
 	throw new Error('No branch name specified');
 }
 
@@ -15,21 +15,21 @@ function run(cmd, callback) {
 	command.on('close', (code) => callback(result));
 }
 
-run('yarn info "' + package.name + '" dist-tags --json', (info) => {
+run('npm info "' + package.name + '" dist-tags --json', (info) => {
 	const jsonInfo = (() => { try { return JSON.parse(info) || {} } catch (e) { return {}; } })();
-	const lastVersion = jsonInfo.type === 'inspect' ? jsonInfo.data.latest : '0.0.0';
+	const lastVersion = jsonInfo.latest || '1.1.0';
 	const versionParts = lastVersion.split('.');
 	// always patch only
 	versionParts[2]++;
 	const nextVersion = versionParts.join('.');
 
-	if (branch === 'master') {
+	if (prereleaseTag === 'latest') {
 		process.stdout.write(nextVersion);
 	} else {
 		const postfix = process.argv[3];
 		if (!postfix) {
 			throw new Error('No postfix specified for non master branch');
 		}
-		process.stdout.write(nextVersion + '-' + branch + '.' + postfix);
+		process.stdout.write(nextVersion + '-' + prereleaseTag + '.' + postfix);
 	}
 });
