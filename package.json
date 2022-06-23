@@ -2,10 +2,6 @@
   "name": "@signageos/codestyle",
   "version": "0.0.11",
   "main": "tslint.json",
-  "scripts": {
-    "release": "yarn version --new-version patch && (npm publish ; git push origin master --tags)",
-    "prepublish": "echo OK"
-  },
   "author": "Michael Zabka <zabka.michael@gmail.com>",
   "license": "MIT",
   "publishConfig": {
