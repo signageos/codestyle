@@ -4,4 +4,4 @@ if (!branch) {
 	throw new Error('No branch name specified');
 }
 
-process.stdout.write(branch === 'master' ? 'latest' : branch);
+process.stdout.write(branch === 'master' ? 'latest' : branch.replace(/[^\w\d-]+/gi, '-'));
