@@ -7,15 +7,5 @@
   "publishConfig": {
     "registry": "https://npm.signageos.io",
     "access": "public"
-  },
-  "dependencies": {
-    "prettier": "2.5.1",
-    "@typescript-eslint/eslint-plugin": "5.40.0",
-    "@typescript-eslint/parser": "5.40.0",
-    "eslint": "8.25.0",
-    "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-no-null": "1.0.2",
-    "eslint-plugin-prettier": "4.2.1",
-    "eslint-plugin-unused-imports": "2.0.0"
   }
 }

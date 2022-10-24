@@ -10,7 +10,7 @@ module.exports = {
 		sourceType: 'module',
 		createDefaultProgram: true,
 	},
-	plugins: ['eslint-plugin-no-null', '@typescript-eslint', 'prettier', 'unused-imports'],
+	plugins: ['eslint-plugin-no-null', '@typescript-eslint', 'prettier'],
 	root: true,
 	rules: {
 		'@typescript-eslint/dot-notation': 'error',
@@ -88,16 +88,6 @@ module.exports = {
 		radix: 'off',
 		semi: 'error',
 		'prettier/prettier': ['error'],
-		'unused-imports/no-unused-imports': 'error',
-		'unused-imports/no-unused-vars': [
-			'warn',
-			{
-				vars: 'all',
-				varsIgnorePattern: '^_',
-				args: 'after-used',
-				argsIgnorePattern: '^_',
-			},
-		],
 	},
 	extends: ['prettier'],
 };
