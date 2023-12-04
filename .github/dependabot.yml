@@ -1,0 +1,13 @@
+version: 2
+registries:
+  codeartifact:
+    type: npm-registry
+    url: ${{variables.NPM_REGISTRY_URL}}
+    token: ${{secrets.NPM_AUTH_TOKEN}}
+updates:
+ - package-ecosystem: "npm"
+   directory: "/"
+   schedule:
+      interval: "weekly"
+   registries:
+     - codeartifact
