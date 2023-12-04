@@ -4,10 +4,6 @@
   "main": "tslint.json",
   "author": "Michael Zabka <zabka.michael@gmail.com>",
   "license": "MIT",
-  "publishConfig": {
-    "registry": "https://npm.signageos.io",
-    "access": "public"
-  },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
