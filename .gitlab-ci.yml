@@ -1,35 +1,9 @@
-image: $CI_REGISTRY/signageos/docker-node:12.16.2-alpine-build
+include:
+  - project: "signageos/docker-images/gitlab-ci"
+    file: "/gitlab-ci-base-ts-lib-public.yaml"
+    ref: master
 
-cache:
-  untracked: true
-  key: "$CI_PROJECT_ID"
-  paths:
-    - node_modules/
-
-build:
-  except:
-    - tags
-  stage: build
-  script:
-    - export TAG=`node tools/tag-by-branch $CI_COMMIT_REF_NAME`
-    - npm install --tag $TAG
-    - if [ `find test* -type f -print0 | xargs -0 grep "\.only" | wc -l` -gt 0 ]; then echo "You forgot the .only in tests" && exit 1; fi
-    - export VERSION=`node tools/version-next-by-prereleasetag ${TAG} ${CI_JOB_ID}`
-    - node tools/version-upgrade $VERSION
-
-    - npm publish --ignore-scripts --tag $TAG
-
-    - NPM_REGISTRY_HOST=registry.npmjs.org
-    - NPM_REGISTRY_URL=https://registry.npmjs.org/
-    - NPM_AUTH_TOKEN=$PUBLIC_NPM_AUTH_TOKEN
-    - tools/prepare-npm-public.sh
-    - npm publish --ignore-scripts --tag $TAG
-
-    - >
-      if [ "$CI_COMMIT_REF_NAME" == "master" ]; then
-        git config user.email "$GITLAB_USER_EMAIL"
-        git config user.name "$GITLAB_USER_EMAIL"
-        git remote set-url origin ${CI_REPOSITORY_URL/"gitlab-ci-token:$CI_JOB_TOKEN"/"$CI_REPOSITORY_PUSH_USERNAME:$CI_REPOSITORY_PUSH_TOKEN"}
-        git tag v${VERSION} -a -m "$(git log --pretty="%s" `git describe --abbrev=0 --tags`...HEAD)"
-        git push origin refs/tags/v${VERSION}
-      fi
+variables:
+  NODE_VERSION: 16
+  MAIN_BRANCH: master
+  RELEASE_BRANCH: master
