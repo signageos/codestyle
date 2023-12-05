@@ -4,6 +4,12 @@
   "main": "tslint.json",
   "author": "Michael Zabka <zabka.michael@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "clean-build": "echo No build needed",
+    "test": "echo No tests needed",
+    "lint": "echo No lints needed",
+    "check": "echo No checks needed"
+  },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",

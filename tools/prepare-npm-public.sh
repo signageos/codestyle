@@ -1,1 +1,0 @@
-node -e 'require("fs").writeFileSync("./package.json", JSON.stringify(Object.assign(require("./package"), { "publishConfig":{"registry":"https://registry.npmjs.org/","access":"public" } }), undefined, 2) + "\n")'
