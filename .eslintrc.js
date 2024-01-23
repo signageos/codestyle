@@ -34,6 +34,7 @@ const config = {
 			{
 				propertyDeclaration: true,
 				memberVariableDeclaration: true,
+				variableDeclarationIgnoreFunction: true,
 			},
 		],
 		'@typescript-eslint/prefer-literal-enum-member': 'error',

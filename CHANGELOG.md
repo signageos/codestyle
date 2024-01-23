@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix type checking in the repo
 - Disable duplicit rules
 - Disable no-redeclare rule
+- Allow class member functions without explicit type definition
 ### Added
 - Stricter typescript enum checking
 
