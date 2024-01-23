@@ -54,7 +54,6 @@ const config = {
 		'no-fallthrough': 'off',
 		'no-new-wrappers': 'error',
 		'no-null/no-null': 'off',
-		'no-redeclare': 'error',
 		'no-underscore-dangle': 'off',
 		'no-unused-expressions': 'off',
 		'no-unused-labels': 'error',
