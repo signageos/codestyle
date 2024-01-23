@@ -51,6 +51,8 @@ const config = {
 				memberVariableDeclaration: true,
 			},
 		],
+		'@typescript-eslint/prefer-literal-enum-member': 'error',
+		'@typescript-eslint/prefer-enum-initializers': 'error',
 		'brace-style': ['error', '1tbs'],
 		'comma-dangle': ['error', 'always-multiline'],
 		curly: 'error',
