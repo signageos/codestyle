@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - Fix eslint linting in the repo
 - Fix type checking in the repo
+- Disable duplicit rules
 ### Added
 - Stricter typescript enum checking
 
