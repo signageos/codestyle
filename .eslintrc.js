@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import("eslint").Linter.Config} */
+const config = {
 	env: {
 		browser: true,
 		node: true,
@@ -101,3 +102,5 @@ module.exports = {
 	},
 	extends: ['prettier'],
 };
+
+module.exports = config;
