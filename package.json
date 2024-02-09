@@ -1,6 +1,6 @@
 {
   "name": "@signageos/codestyle",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "tslint.json",
   "author": "Michael Zabka <zabka.michael@gmail.com>",
   "license": "MIT",
