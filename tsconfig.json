@@ -1,16 +1,4 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "allowJs": true,
-    "checkJs": true,
-    "noEmit": true
-  },
-  "include": [
-    "**/.*.js",
-  ]
+	"extends": "./tsconfig-strict.json",
+	"include": ["**/.*.js"],
 }

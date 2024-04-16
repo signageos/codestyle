@@ -1,0 +1,48 @@
+{
+	// Recommended typescript version 4.7+
+	"compilerOptions": {
+		// Sensible defaults for most projects
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
+		"target": "es6",
+
+		// Sensible defaults for nearly all projects
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"resolveJsonModule": true,
+		"moduleDetection": "force",
+		"isolatedModules": true,
+		"forceConsistentCasingInFileNames": true,
+
+		// Type checking
+		"strict": true,
+		"noUncheckedIndexedAccess": true,
+		"noUnusedParameters": true,
+		"noUnusedLocals": true,
+
+		// Features
+		"lib": ["es2022"],
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"jsx": "react",
+
+		// Typecheck javascript
+		"allowJs": true,
+		"checkJs": true
+
+		// Compilation with tsc
+		// "moduleResolution": "nodenext",
+		// "declaration": true,
+
+		// Compilation with a bundler
+		// "module": "preserve", // ts 5.4+
+		// "moduleResolution": "bundler", // ts 5.0+
+		// "target": "esnext",
+		// "declaration": true,
+
+		// Only typechecking
+		// "module": "preserve", // ts 5.4+
+		// "moduleResolution": "bundler" // ts 5.0+
+		// "noEmit": true
+	}
+}
