@@ -72,6 +72,7 @@ const config = {
 				argsIgnorePattern: '^_',
 			},
 		],
+		'@typescript-eslint/no-floating-promises': 'warn',
 	},
 	extends: ['prettier'],
 };
