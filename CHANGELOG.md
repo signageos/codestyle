@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - Project dependency update
+- Package supports Node 20
 
 ## [0.4.0] - 2024-09-17
 ### Added
