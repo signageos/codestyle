@@ -1,29 +1,29 @@
 {
-	"name": "@signageos/codestyle",
-	"version": "0.4.0",
-	"main": "tslint.json",
-	"author": "Michael Zabka <zabka.michael@gmail.com>",
-	"license": "MIT",
-	"scripts": {
-		"clean-build": "echo No build needed",
-		"test": "echo No tests needed",
-		"lint": "eslint --ext .ts,.tsx,.js ./*.js",
-		"lint:prettier": "prettier  \"**/*.+(ts|tsx|json|js)\" --check",
-		"lint:prettier:fix": "prettier  \"**/*.+(ts|tsx|json|js)\" --write",
-		"check": "echo No checks needed"
-	},
-	"dependencies": {
-		"typescript-eslint": "8.31.0",
-		"@typescript-eslint/eslint-plugin": "8.31.0",
-		"@typescript-eslint/parser": "8.31.0",
-		"eslint": "9.25.1",
-		"eslint-config-prettier": "10.1.2",
-		"eslint-plugin-no-null": "1.0.2",
-		"eslint-plugin-prettier": "5.2.6",
-		"eslint-plugin-unused-imports": "4.1.4",
-		"prettier": "3.5.3"
-	},
-	"devDependencies": {
-		"@types/eslint": "9.6.1"
-	}
+  "name": "@signageos/codestyle",
+  "version": "1.0.0",
+  "main": "tslint.json",
+  "author": "Michael Zabka <zabka.michael@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "clean-build": "echo No build needed",
+    "test": "echo No tests needed",
+    "lint": "eslint --ext .ts,.tsx,.js ./*.js",
+    "lint:prettier": "prettier  \"**/*.+(ts|tsx|json|js)\" --check",
+    "lint:prettier:fix": "prettier  \"**/*.+(ts|tsx|json|js)\" --write",
+    "check": "echo No checks needed"
+  },
+  "dependencies": {
+    "typescript-eslint": "8.31.0",
+    "@typescript-eslint/eslint-plugin": "8.31.0",
+    "@typescript-eslint/parser": "8.31.0",
+    "eslint": "9.25.1",
+    "eslint-config-prettier": "10.1.2",
+    "eslint-plugin-no-null": "1.0.2",
+    "eslint-plugin-prettier": "5.2.6",
+    "eslint-plugin-unused-imports": "4.1.4",
+    "prettier": "3.5.3"
+  },
+  "devDependencies": {
+    "@types/eslint": "9.6.1"
+  }
 }
