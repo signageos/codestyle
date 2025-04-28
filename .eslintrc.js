@@ -75,6 +75,22 @@ const config = {
 		'@typescript-eslint/no-floating-promises': 'warn',
 	},
 	extends: ['prettier'],
+	ignorePatterns: [
+		'config/**/*.json',
+		'coverage/*',
+		'node_modules/',
+		'package.json',
+		'package-lock.json',
+		'README.md',
+		'CHANGELOG.md',
+		'.prettierignore',
+		'docker-compose.yml',
+		'patches/*',
+		'webpack.config.js',
+		'helm/*',
+		'tsconfig.json',
+		'.depcheckrc.json',
+	],
 };
 
 module.exports = config;
