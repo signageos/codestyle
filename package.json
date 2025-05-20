@@ -1,13 +1,18 @@
 {
   "name": "@signageos/codestyle",
   "version": "1.0.0",
-  "main": "tslint.json",
+  "main": "eslint.config.js",
   "author": "Michael Zabka <zabka.michael@gmail.com>",
   "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=18",
+    "npm": ">=9"
+  },
   "scripts": {
     "clean-build": "echo No build needed",
     "test": "echo No tests needed",
-    "lint": "eslint --ext .ts,.tsx,.js ./*.js",
+    "lint": "eslint --config eslint.config.js .",
     "lint:prettier": "prettier  \"**/*.+(ts|tsx|json|js)\" --check",
     "lint:prettier:fix": "prettier  \"**/*.+(ts|tsx|json|js)\" --write",
     "check": "echo No checks needed"
