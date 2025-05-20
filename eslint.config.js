@@ -59,6 +59,8 @@ export default tseslint.config(
 			'@typescript-eslint/prefer-literal-enum-member': 'error',
 			'@typescript-eslint/prefer-enum-initializers': 'error',
 			'@typescript-eslint/no-floating-promises': 'warn',
+			'@typescript-eslint/no-misused-spread': 'error',
+			'@typescript-eslint/prefer-optional-chain': 'error',
 			curly: 'error',
 			'default-case': 'error',
 			'dot-notation': 'off',
