@@ -67,7 +67,7 @@ export default tseslint.config(
 			'id-match': 'off',
 			'no-bitwise': 'error',
 			'no-caller': 'error',
-			'no-console': 'off',
+			'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
 			'no-debugger': 'error',
 			'no-empty': 'error',
 			'no-empty-function': 'off',
