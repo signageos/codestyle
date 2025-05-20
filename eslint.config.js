@@ -55,14 +55,7 @@ export default tseslint.config(
 			'@typescript-eslint/no-var-requires': 'off',
 			'@typescript-eslint/prefer-namespace-keyword': 'error',
 			'@typescript-eslint/quotes': 'off',
-			'@typescript-eslint/typedef': [
-				'error',
-				{
-					propertyDeclaration: true,
-					memberVariableDeclaration: true,
-					variableDeclarationIgnoreFunction: true,
-				},
-			],
+			'@typescript-eslint/typedef': 'off',
 			'@typescript-eslint/prefer-literal-enum-member': 'error',
 			'@typescript-eslint/prefer-enum-initializers': 'error',
 			'@typescript-eslint/no-floating-promises': 'warn',
