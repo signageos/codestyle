@@ -1,6 +1,5 @@
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
-import eslintPluginNoNull from 'eslint-plugin-no-null';
 import eslintPluginPrettier from 'eslint-plugin-prettier';
 import eslintPluginUnusedImports from 'eslint-plugin-unused-imports';
 
@@ -46,7 +45,6 @@ export default tseslint.config(
 		},
 		plugins: {
 			'@typescript-eslint': tseslint.plugin,
-			'no-null': eslintPluginNoNull,
 			prettier: eslintPluginPrettier,
 			'unused-imports': eslintPluginUnusedImports,
 		},
