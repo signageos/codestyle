@@ -94,8 +94,9 @@ export default tseslint.config(
 					argsIgnorePattern: '^_',
 				},
 			],
-			'max-len': ['error', { code: 140 }],
-			indent: ['error', 'tab'],
+			'max-len': 'off', // Let Prettier handle line length
+			indent: 'off', // Let Prettier handle indentation
+			'comma-dangle': 'off', // Let Prettier handle trailing commas
 			'@typescript-eslint/member-ordering': [
 				'error',
 				{
@@ -110,16 +111,6 @@ export default tseslint.config(
 						'public-instance-method',
 						'private-instance-method',
 					],
-				},
-			],
-			'comma-dangle': [
-				'error',
-				{
-					arrays: 'always-multiline',
-					objects: 'always-multiline',
-					imports: 'always-multiline',
-					exports: 'always-multiline',
-					functions: 'always-multiline',
 				},
 			],
 			'capitalized-comments': ['error', 'always'],
