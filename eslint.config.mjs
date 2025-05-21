@@ -1,37 +1,142 @@
-import { FlatCompat } from '@eslint/eslintrc';
-import codeStyle from './.eslintrc.js';
-import tseslint from 'typescript-eslint';
+// eslint.config.js
+import { defineConfig } from 'eslint/config';
+import js from '@eslint/js';
+import * as tseslint from 'typescript-eslint';
+import eslintPluginPrettier from 'eslint-plugin-prettier';
+import eslintPluginUnusedImports from 'eslint-plugin-unused-imports';
 
-const compat = new FlatCompat();
-
-/** @type {import("typescript-eslint").Config} */
-const config = tseslint.config(compat.extends('prettier'), compat.config(codeStyle), {
-	files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts', '**/*.mjs', '**/*.js'],
-	languageOptions: {
-		parser: tseslint.parser,
-		parserOptions: {
-			project: './tsconfig.json',
+export default defineConfig([
+	// Base ignore patterns
+	{
+		ignores: [
+			'coverage/*',
+			'node_modules/',
+			'CHANGELOG.md',
+			'.prettierignore',
+			'docker-compose.yml',
+			'patches/*',
+			'helm/*',
+			'dist/**/*',
+			'*.min.js',
+			'**/*.json',
+		],
+	},
+	js.configs.recommended,
+	tseslint.configs.recommended,
+	// JavaScript files configuration
+	{
+		files: ['**/*.js', '**/*.mjs'],
+		languageOptions: {
+			ecmaVersion: 'latest',
+			sourceType: 'module',
+			globals: {
+				module: 'readonly',
+				require: 'readonly',
+				process: 'readonly',
+				__dirname: 'readonly',
+				__filename: 'readonly',
+			},
+		},
+		plugins: {
+			prettier: eslintPluginPrettier,
+		},
+		rules: {
+			'prettier/prettier': ['error'],
+			'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
+			'no-debugger': 'error',
 		},
 	},
-	rules: {
-		'@typescript-eslint/no-empty-function': 'off',
-		'unused-imports/no-unused-vars': 'off',
-		'unused-imports/no-unused-imports': 'off',
+	// TypeScript files configuration
+	{
+		files: ['**/*.ts', '**/*.tsx'],
+		languageOptions: {
+			ecmaVersion: 'latest',
+			sourceType: 'module',
+			parser: tseslint.parser,
+			parserOptions: {
+				project: ['./tsconfig.json'],
+				tsconfigRootDir: '.',
+			},
+			globals: {
+				browser: 'readonly',
+				node: 'readonly',
+			},
+		},
+		plugins: {
+			'@typescript-eslint': tseslint.plugin,
+			prettier: eslintPluginPrettier,
+			'unused-imports': eslintPluginUnusedImports,
+		},
+		rules: {
+			'@typescript-eslint/dot-notation': 'error',
+			'@typescript-eslint/no-empty-function': 'error',
+			'@typescript-eslint/no-explicit-any': 'off',
+			'@typescript-eslint/no-inferrable-types': 'off',
+			'@typescript-eslint/no-require-imports': 'off',
+			'@typescript-eslint/no-shadow': ['error', { hoist: 'all' }],
+			'@typescript-eslint/no-unused-expressions': 'error',
+			'@typescript-eslint/no-var-requires': 'off',
+			'@typescript-eslint/prefer-namespace-keyword': 'error',
+			'@typescript-eslint/quotes': 'off',
+			'@typescript-eslint/typedef': 'off',
+			'@typescript-eslint/prefer-literal-enum-member': 'error',
+			'@typescript-eslint/prefer-enum-initializers': 'error',
+			'@typescript-eslint/no-floating-promises': 'warn',
+			'@typescript-eslint/no-misused-spread': 'error',
+			'@typescript-eslint/prefer-optional-chain': 'error',
+			curly: 'error',
+			'default-case': 'error',
+			'dot-notation': 'off',
+			eqeqeq: ['error', 'smart'],
+			'id-denylist': ['off', 'any', 'Number', 'number', 'String', 'string', 'Boolean', 'boolean', 'Undefined', 'undefined'],
+			'id-match': 'off',
+			'no-bitwise': 'error',
+			'no-caller': 'error',
+			'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
+			'no-debugger': 'error',
+			'no-empty': 'error',
+			'no-empty-function': 'off',
+			'no-eval': 'error',
+			'no-fallthrough': 'off',
+			'no-new-wrappers': 'error',
+			'no-null/no-null': 'off',
+			'no-underscore-dangle': 'off',
+			'no-unused-expressions': 'off',
+			'no-unused-labels': 'error',
+			'no-var': 'error',
+			'no-duplicate-imports': 'error',
+			radix: 'off',
+			'prettier/prettier': ['error'],
+			'unused-imports/no-unused-imports': 'error',
+			'unused-imports/no-unused-vars': [
+				'warn',
+				{
+					vars: 'all',
+					varsIgnorePattern: '^_',
+					args: 'after-used',
+					argsIgnorePattern: '^_',
+				},
+			],
+			'max-len': 'off',
+			indent: 'off',
+			'comma-dangle': 'off',
+			'@typescript-eslint/member-ordering': [
+				'error',
+				{
+					default: [
+						'public-static-field',
+						'private-static-field',
+						'public-instance-field',
+						'private-instance-field',
+						'constructor',
+						'public-static-method',
+						'private-static-method',
+						'public-instance-method',
+						'private-instance-method',
+					],
+				},
+			],
+			'capitalized-comments': ['error', 'always'],
+		},
 	},
-    ignores: [
-        'dist/**/* ',
-        'build/**/*',
-        'node_modules/**/*',
-        '*.min.js ',
-        '**/*.json',
-        'node_modules/',
-        'package.json',
-        'package-lock.json',
-        'README.md',
-        'CHANGELOG.md',
-        '.prettierignore',
-        'docker-compose.yml',
-    ]
-});
-
-export default config;
+]);

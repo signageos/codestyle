@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+### Fixed
+- disabled `max-len`, `indent`, `comma-dangle` in favor of prettier
+
+### Added
+- `unused-imports` plugin
+- `eslint.config.mjs` modern flat-style ESlint config
+
+### Removed
+- `tslint.json` removed support for TSlint
+- `.eslintrc.js` removed ESlint legacy config
+- dropped support for Node 16
+
+### Changed
+- `ESlint v8.21.0` is now minimal requirement
+- `plugins` are imported directly
+- `env` is replaced with `languageOptions.globals`
+- `parserOptions` moved under `languageOptions`
+- `extends` is replaced with direct imports from the extended configs
+- `ignores` replaces `ignorePatterns`
+
 ## [1.0.0] - 2025-04-28
 ### Added
 - Flat-style config `eslint.config.mjs`
