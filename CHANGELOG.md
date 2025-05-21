@@ -5,9 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-
 ### Fixed
-- adopted missing settings from tslint `indentation`, `member-ordering`, `line-length`
+- disabled `max-len`, `indent`, `comma-dangle` in favor of prettier
 
 ### Added
 - `unused-imports` plugin
@@ -15,9 +14,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Removed
 - `tslint.json` removed support for TSlint
-- `eslint.config.mjs` removed ESlint module config
 - `.eslintrc.js` removed ESlint legacy config
-- support for Node 16
+- dropped support for Node 16
 
 ### Changed
 - `ESlint v8.21.0` is now minimal requirement

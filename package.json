@@ -1,8 +1,8 @@
 {
   "name": "@signageos/codestyle",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "main": "eslint.config.mjs",
-  "author": "Michael Zabka <zabka.michael@gmail.com>",
+  "author": "signageOS.io <dev@signageos.io>",
   "license": "MIT",
   "engines": {
     "node": ">=18",
