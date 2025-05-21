@@ -1,9 +1,12 @@
+// eslint.config.js
+import { defineConfig } from 'eslint/config';
 import js from '@eslint/js';
-import tseslint from 'typescript-eslint';
+import * as tseslint from 'typescript-eslint';
 import eslintPluginPrettier from 'eslint-plugin-prettier';
 import eslintPluginUnusedImports from 'eslint-plugin-unused-imports';
 
-export default tseslint.config(
+export default defineConfig([
+	// Base ignore patterns
 	{
 		ignores: [
 			'coverage/*',
@@ -19,8 +22,33 @@ export default tseslint.config(
 		],
 	},
 	js.configs.recommended,
-	...tseslint.configs.recommended,
+	tseslint.configs.recommended,
+	// JavaScript files configuration
 	{
+		files: ['**/*.js', '**/*.mjs'],
+		languageOptions: {
+			ecmaVersion: 'latest',
+			sourceType: 'module',
+			globals: {
+				module: 'readonly',
+				require: 'readonly',
+				process: 'readonly',
+				__dirname: 'readonly',
+				__filename: 'readonly',
+			},
+		},
+		plugins: {
+			prettier: eslintPluginPrettier,
+		},
+		rules: {
+			'prettier/prettier': ['error'],
+			'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
+			'no-debugger': 'error',
+		},
+	},
+	// TypeScript files configuration
+	{
+		files: ['**/*.ts', '**/*.tsx'],
 		languageOptions: {
 			ecmaVersion: 'latest',
 			sourceType: 'module',
@@ -45,12 +73,7 @@ export default tseslint.config(
 			'@typescript-eslint/no-explicit-any': 'off',
 			'@typescript-eslint/no-inferrable-types': 'off',
 			'@typescript-eslint/no-require-imports': 'off',
-			'@typescript-eslint/no-shadow': [
-				'error',
-				{
-					hoist: 'all',
-				},
-			],
+			'@typescript-eslint/no-shadow': ['error', { hoist: 'all' }],
 			'@typescript-eslint/no-unused-expressions': 'error',
 			'@typescript-eslint/no-var-requires': 'off',
 			'@typescript-eslint/prefer-namespace-keyword': 'error',
@@ -94,9 +117,9 @@ export default tseslint.config(
 					argsIgnorePattern: '^_',
 				},
 			],
-			'max-len': 'off', // Let Prettier handle line length
-			indent: 'off', // Let Prettier handle indentation
-			'comma-dangle': 'off', // Let Prettier handle trailing commas
+			'max-len': 'off',
+			indent: 'off',
+			'comma-dangle': 'off',
 			'@typescript-eslint/member-ordering': [
 				'error',
 				{
@@ -116,4 +139,4 @@ export default tseslint.config(
 			'capitalized-comments': ['error', 'always'],
 		},
 	},
-);
+]);

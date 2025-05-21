@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - `unused-imports` plugin
-- `eslint.config.js` modern flat-style ESlint config
+- `eslint.config.mjs` modern flat-style ESlint config
 
 ### Removed
 - `tslint.json` removed support for TSlint
