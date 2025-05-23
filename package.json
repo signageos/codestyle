@@ -1,6 +1,6 @@
 {
   "name": "@signageos/codestyle",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "eslint.config.mjs",
   "author": "signageOS.io <dev@signageos.io>",
   "license": "MIT",
