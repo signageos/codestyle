@@ -83,6 +83,15 @@ export default defineConfig([
 			'@typescript-eslint/prefer-enum-initializers': 'error',
 			'@typescript-eslint/no-floating-promises': 'warn',
 			'@typescript-eslint/no-misused-spread': 'error',
+			'@typescript-eslint/no-unused-vars': [
+				'error',
+				{
+					argsIgnorePattern: '^_',
+					destructuredArrayIgnorePattern: '^_',
+					ignoreRestSiblings: true,
+					varsIgnorePattern: '^_',
+				},
+			],
 			'@typescript-eslint/prefer-optional-chain': 'error',
 			curly: 'error',
 			'default-case': 'error',
@@ -108,15 +117,7 @@ export default defineConfig([
 			radix: 'off',
 			'prettier/prettier': ['error'],
 			'unused-imports/no-unused-imports': 'error',
-			'unused-imports/no-unused-vars': [
-				'warn',
-				{
-					vars: 'all',
-					varsIgnorePattern: '^_',
-					args: 'after-used',
-					argsIgnorePattern: '^_',
-				},
-			],
+			'unused-imports/no-unused-vars': 'off',
 			'max-len': 'off',
 			indent: 'off',
 			'comma-dangle': 'off',
