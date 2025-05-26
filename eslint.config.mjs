@@ -23,32 +23,8 @@ export default defineConfig([
 	},
 	js.configs.recommended,
 	tseslint.configs.recommended,
-	// JavaScript files configuration
 	{
-		files: ['**/*.js', '**/*.mjs'],
-		languageOptions: {
-			ecmaVersion: 'latest',
-			sourceType: 'module',
-			globals: {
-				module: 'readonly',
-				require: 'readonly',
-				process: 'readonly',
-				__dirname: 'readonly',
-				__filename: 'readonly',
-			},
-		},
-		plugins: {
-			prettier: eslintPluginPrettier,
-		},
-		rules: {
-			'prettier/prettier': ['error'],
-			'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
-			'no-debugger': 'error',
-		},
-	},
-	// TypeScript files configuration
-	{
-		files: ['**/*.ts', '**/*.tsx'],
+		files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.mjs'],
 		languageOptions: {
 			ecmaVersion: 'latest',
 			sourceType: 'module',
@@ -109,6 +85,7 @@ export default defineConfig([
 			'no-fallthrough': 'off',
 			'no-new-wrappers': 'error',
 			'no-null/no-null': 'off',
+			'no-undef': 'off',
 			'no-underscore-dangle': 'off',
 			'no-unused-expressions': 'off',
 			'no-unused-labels': 'error',
