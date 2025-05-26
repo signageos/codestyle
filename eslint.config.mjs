@@ -114,7 +114,16 @@ export default defineConfig([
 					],
 				},
 			],
-			'capitalized-comments': ['error', 'always'],
+			'capitalized-comments': [
+				'error',
+				'always',
+				{
+					ignoreConsecutiveComments: true,
+					ignoreInlineComments: true,
+					// Allow different newline formatting of code using "// force-indent" comment
+					ignorePattern: 'force-indent',
+				},
+			],
 		},
 	},
 ]);
