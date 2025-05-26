@@ -18,37 +18,22 @@ export default defineConfig([
 			'helm/*',
 			'dist/**/*',
 			'*.min.js',
-			'**/*.json',
 		],
 	},
 	js.configs.recommended,
 	tseslint.configs.recommended,
-	// JavaScript files configuration
 	{
-		files: ['**/*.js', '**/*.mjs'],
-		languageOptions: {
-			ecmaVersion: 'latest',
-			sourceType: 'module',
-			globals: {
-				module: 'readonly',
-				require: 'readonly',
-				process: 'readonly',
-				__dirname: 'readonly',
-				__filename: 'readonly',
-			},
-		},
+		files: ['**/*.json'],
 		plugins: {
 			prettier: eslintPluginPrettier,
 		},
 		rules: {
-			'prettier/prettier': ['error'],
-			'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
-			'no-debugger': 'error',
+			'@typescript-eslint/no-unused-expressions': 'off',
+			'prettier/prettier': 'error',
 		},
 	},
-	// TypeScript files configuration
 	{
-		files: ['**/*.ts', '**/*.tsx'],
+		files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.mjs'],
 		languageOptions: {
 			ecmaVersion: 'latest',
 			sourceType: 'module',
@@ -108,7 +93,7 @@ export default defineConfig([
 			'no-eval': 'error',
 			'no-fallthrough': 'off',
 			'no-new-wrappers': 'error',
-			'no-null/no-null': 'off',
+			'no-undef': 'off',
 			'no-underscore-dangle': 'off',
 			'no-unused-expressions': 'off',
 			'no-unused-labels': 'error',
@@ -137,7 +122,16 @@ export default defineConfig([
 					],
 				},
 			],
-			'capitalized-comments': ['error', 'always'],
+			'capitalized-comments': [
+				'error',
+				'always',
+				{
+					ignoreConsecutiveComments: true,
+					ignoreInlineComments: true,
+					// Allow different newline formatting of code using "// force-indent" comment
+					ignorePattern: 'force-indent',
+				},
+			],
 		},
 	},
 ]);

@@ -1,4 +1,7 @@
 {
 	"extends": "./tsconfig-strict.json",
-	"include": ["**/.*.js"]
+	"compilerOptions": {
+		"noEmit": true
+	},
+	"include": ["**/.*.js", "**/*.mjs"]
 }

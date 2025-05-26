@@ -1,18 +1,8 @@
 # General
 dist/*
 node_modules/*
-package.json
 package-lock.json
-tsconfig.json
-.prettierignore
 
 # IDE
 .idea
 .vscode
-
-# Test
-.mocharc.json
-.c8rc
-
-# Other
-.depcheckrc.json
