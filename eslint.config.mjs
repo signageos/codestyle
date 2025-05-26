@@ -18,11 +18,20 @@ export default defineConfig([
 			'helm/*',
 			'dist/**/*',
 			'*.min.js',
-			'**/*.json',
 		],
 	},
 	js.configs.recommended,
 	tseslint.configs.recommended,
+	{
+		files: ['**/*.json'],
+		plugins: {
+			prettier: eslintPluginPrettier,
+		},
+		rules: {
+			'@typescript-eslint/no-unused-expressions': 'off',
+			'prettier/prettier': 'error',
+		},
+	},
 	{
 		files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.mjs'],
 		languageOptions: {
