@@ -84,7 +84,6 @@ export default defineConfig([
 			'no-eval': 'error',
 			'no-fallthrough': 'off',
 			'no-new-wrappers': 'error',
-			'no-null/no-null': 'off',
 			'no-undef': 'off',
 			'no-underscore-dangle': 'off',
 			'no-unused-expressions': 'off',
