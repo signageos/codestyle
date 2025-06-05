@@ -110,28 +110,20 @@ export default defineConfig([
 				'error',
 				{
 					default: [
-						'public-static-field',
-						'private-static-field',
-						'public-instance-field',
-						'private-instance-field',
+						'public-field',
+						'private-field',
+						'field',
 						'constructor',
-						'public-static-method',
-						'private-static-method',
-						'public-instance-method',
-						'private-instance-method',
+						'public-accessor',
+						'private-accessor',
+						'accessor',
+						'public-method',
+						'private-method',
+						'method',
 					],
 				},
 			],
-			'capitalized-comments': [
-				'error',
-				'always',
-				{
-					ignoreConsecutiveComments: true,
-					ignoreInlineComments: true,
-					// Allow different newline formatting of code using "// force-indent" comment
-					ignorePattern: 'force-indent',
-				},
-			],
+			'capitalized-comments': 'off',
 		},
 	},
 ]);
