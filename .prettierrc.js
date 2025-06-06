@@ -15,7 +15,7 @@ const config = {
 	endOfLine: 'auto',
 	overrides: [
 		{
-			files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
+			files: ['*.ts', '*.tsx'],
 			options: {
 				parser: 'typescript',
 			},
