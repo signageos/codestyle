@@ -4,6 +4,7 @@ import js from '@eslint/js';
 import * as tseslint from 'typescript-eslint';
 import eslintPluginPrettier from 'eslint-plugin-prettier';
 import eslintPluginUnusedImports from 'eslint-plugin-unused-imports';
+import mochaPlugin from 'eslint-plugin-mocha';
 
 export default defineConfig([
 	// Base ignore patterns
@@ -51,6 +52,7 @@ export default defineConfig([
 			'@typescript-eslint': tseslint.plugin,
 			prettier: eslintPluginPrettier,
 			'unused-imports': eslintPluginUnusedImports,
+			'eslint-plugin-mocha': mochaPlugin,
 		},
 		rules: {
 			'@typescript-eslint/dot-notation': 'error',
@@ -124,6 +126,35 @@ export default defineConfig([
 				},
 			],
 			'capitalized-comments': 'off',
+		},
+	},
+	mochaPlugin.configs.recommended,
+	{
+		rules: {
+			'mocha/consistent-interface': 'off',
+			'mocha/consistent-spacing-between-blocks': 'error',
+			'mocha/handle-done-callback': 'off',
+			'mocha/max-top-level-suites': 'warn',
+			'mocha/no-async-suite': 'error',
+			'mocha/no-empty-title': 'error',
+			'mocha/no-exclusive-tests': 'warn',
+			'mocha/no-exports': 'warn',
+			'mocha/no-global-tests': 'error',
+			'mocha/no-hooks': 'off',
+			'mocha/no-hooks-for-single-case': 'off',
+			'mocha/no-identical-title': 'error',
+			'mocha/no-mocha-arrows': 'error',
+			'mocha/no-nested-tests': 'error',
+			'mocha/no-pending-tests': 'warn',
+			'mocha/no-return-and-callback': 'error',
+			'mocha/no-return-from-async': 'off',
+			'mocha/no-setup-in-describe': 'off',
+			'mocha/no-sibling-hooks': 'error',
+			'mocha/no-synchronous-tests': 'off',
+			'mocha/no-top-level-hooks': 'error',
+			'mocha/prefer-arrow-callback': 'off',
+			'mocha/valid-suite-title': 'off',
+			'mocha/valid-test-title': 'error',
 		},
 	},
 ]);
