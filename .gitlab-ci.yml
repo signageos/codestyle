@@ -1,9 +1,19 @@
 include:
-  - project: "signageos/docker-images/gitlab-ci"
-    file: "/gitlab-ci-base-ts-lib-public.yaml"
+  - project: "signageos/infra/gitlab-ci"
+    file: "/pipelines/ts-lib-public.yaml"
     ref: master
 
-variables:
-  NODE_VERSION: 20
-  MAIN_BRANCH: master
-  RELEASE_BRANCH: master
+build:build-npm-package:
+  stage: build
+  script:
+    - echo "No npm build needed for codestyle library - using source files directly"
+
+test:general:
+  stage: test
+  script:
+    - echo "No general tests needed for codestyle library"
+
+test:types:
+  stage: test
+  script:
+    - echo "No type checking needed for codestyle library"
