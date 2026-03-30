@@ -41,7 +41,7 @@ export default defineConfig([
 			parser: tseslint.parser,
 			parserOptions: {
 				project: ['./tsconfig.json'],
-				tsconfigRootDir: '.',
+				tsconfigRootDir: process.cwd(),
 			},
 			globals: {
 				browser: 'readonly',
