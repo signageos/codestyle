@@ -81,6 +81,7 @@ export default defineConfig([
 				},
 			],
 			'@typescript-eslint/prefer-optional-chain': 'error',
+			'@typescript-eslint/no-namespace': ['error', { allowDeclarations: true }],
 			curly: 'error',
 			'default-case': 'error',
 			'dot-notation': 'off',
