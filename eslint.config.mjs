@@ -77,7 +77,6 @@ export default defineConfig([
 					destructuredArrayIgnorePattern: '^_',
 					ignoreRestSiblings: true,
 					varsIgnorePattern: '^_',
-					reportUsedIgnorePattern: true,
 				},
 			],
 			'@typescript-eslint/prefer-optional-chain': 'error',
