@@ -6,7 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 ### Fixed
-- Do not allow usage of _ and _ prefixed properties
+- Update dependencies
+- Allow declare module statements
+- Add .d.ts files for js files in this package
 
 ## [2.1.0] - 2025-09-02
 ### Added
