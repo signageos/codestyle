@@ -41,7 +41,7 @@ export default defineConfig([
 			parser: tseslint.parser,
 			parserOptions: {
 				project: ['./tsconfig.json'],
-				tsconfigRootDir: '.',
+				tsconfigRootDir: process.cwd(),
 			},
 			globals: {
 				browser: 'readonly',
@@ -77,10 +77,10 @@ export default defineConfig([
 					destructuredArrayIgnorePattern: '^_',
 					ignoreRestSiblings: true,
 					varsIgnorePattern: '^_',
-					reportUsedIgnorePattern: true,
 				},
 			],
 			'@typescript-eslint/prefer-optional-chain': 'error',
+			'@typescript-eslint/no-namespace': ['error', { allowDeclarations: true }],
 			curly: 'error',
 			'default-case': 'error',
 			'dot-notation': 'off',

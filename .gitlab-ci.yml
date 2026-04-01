@@ -1,12 +1,7 @@
 include:
-  - project: "signageos/infra/gitlab-ci"
-    file: "/pipelines/ts-lib-public.yaml"
+  - project: 'signageos/infra/gitlab-ci'
+    file: '/pipelines/ts-lib-public.yaml'
     ref: master
-
-build:build-npm-package:
-  stage: build
-  script:
-    - echo "No npm build needed for codestyle library - using source files directly"
 
 test:general:
   stage: test
