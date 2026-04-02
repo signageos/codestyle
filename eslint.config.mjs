@@ -131,7 +131,7 @@ export default defineConfig([
 	{
 		rules: {
 			'mocha/consistent-interface': 'off',
-			'mocha/consistent-spacing-between-blocks': 'error',
+			'mocha/consistent-spacing-between-blocks': 'off', // this clashes with prettier
 			'mocha/handle-done-callback': 'off',
 			'mocha/max-top-level-suites': 'warn',
 			'mocha/no-async-suite': 'error',
