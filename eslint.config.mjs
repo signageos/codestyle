@@ -104,6 +104,7 @@ export default defineConfig([
 			'no-bitwise': 'error',
 			'no-caller': 'error',
 			'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
+			'no-constant-condition': ['error', { checkLoops: 'allExceptWhileTrue' }],
 			'no-debugger': 'error',
 			'no-duplicate-imports': 'error',
 			'no-empty-function': 'off',
