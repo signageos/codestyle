@@ -112,6 +112,7 @@ export default defineConfig([
 			'no-eval': 'error',
 			'no-fallthrough': 'off',
 			'no-new-wrappers': 'error',
+			'no-prototype-builtins': 'off', // false positives with should(...).hasOwnProperty()
 			'no-undef': 'off',
 			'no-underscore-dangle': 'off',
 			'no-unused-expressions': 'off',
