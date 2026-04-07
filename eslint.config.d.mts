@@ -1,3 +1,3 @@
-declare const config: import('@eslint/core').ConfigObject;
+declare const config: ReturnType<typeof import('eslint/config').defineConfig>;
 
 export default config;
