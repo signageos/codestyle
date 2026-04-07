@@ -5,6 +5,7 @@ import * as tseslint from 'typescript-eslint';
 import eslintPluginPrettier from 'eslint-plugin-prettier';
 import eslintPluginUnusedImports from 'eslint-plugin-unused-imports';
 import mochaPlugin from 'eslint-plugin-mocha';
+import eslintPluginSos from './plugins/sos/index.mjs';
 
 export default defineConfig([
 	// Base ignore patterns
@@ -127,8 +128,12 @@ export default defineConfig([
 			radix: 'off',
 		},
 	},
-	mochaPlugin.configs.recommended,
 	{
+		files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.mjs'],
+		...mochaPlugin.configs.recommended,
+	},
+	{
+		files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.mjs'],
 		rules: {
 			'mocha/consistent-interface': 'off',
 			'mocha/consistent-spacing-between-blocks': 'off', // this clashes with prettier
@@ -154,6 +159,18 @@ export default defineConfig([
 			'mocha/prefer-arrow-callback': 'off',
 			'mocha/valid-suite-title': 'off',
 			'mocha/valid-test-title': 'error',
+		},
+	},
+	{
+		files: ['**/*.yml', '**/*.yaml', '**/*.html', '**/*.md'],
+		language: 'sos/text',
+		plugins: {
+			sos: eslintPluginSos,
+			prettier: eslintPluginPrettier,
+		},
+		rules: {
+			'no-irregular-whitespace': 'off',
+			'prettier/prettier': 'error',
 		},
 	},
 ]);
