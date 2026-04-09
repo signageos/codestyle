@@ -20,6 +20,25 @@ const config = {
 				parser: 'typescript',
 			},
 		},
+		{
+			files: ['*.md'],
+			options: {
+				parser: 'markdown',
+			},
+		},
+		{
+			files: ['*.html'],
+			options: {
+				parser: 'html',
+			},
+		},
+		{
+			files: ['*.yml', '*.yaml'],
+			options: {
+				proseWrap: 'preserve',
+				parser: 'yaml',
+			},
+		},
 	],
 };
 
