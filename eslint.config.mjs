@@ -173,4 +173,10 @@ export default defineConfig([
 			'prettier/prettier': 'error',
 		},
 	},
+	{
+		files: ['**/package.json'],
+		rules: {
+			'no-dupe-keys': 'off',
+		},
+	},
 ]);
