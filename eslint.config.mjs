@@ -10,7 +10,7 @@ import eslintPluginSos from './plugins/sos/index.mjs';
 export default defineConfig([
 	// Base ignore patterns
 	{
-		ignores: ['.prettierignore', '*.min.js', 'CHANGELOG.md', 'coverage/*', 'dist/**/*', 'helm/*', 'node_modules/', 'patches/*'],
+		ignores: ['.prettierignore', '*.min.js', 'coverage/*', 'dist/**/*', 'helm/*', 'node_modules/', 'patches/*'],
 	},
 	js.configs.recommended,
 	tseslint.configs.recommended,
@@ -167,6 +167,17 @@ export default defineConfig([
 		files: ['**/package.json'],
 		rules: {
 			'no-dupe-keys': 'off',
+		},
+	},
+	{
+		files: ['CHANGELOG.md'],
+		language: 'sos/changelog',
+		plugins: {
+			sos: eslintPluginSos,
+		},
+		rules: {
+			'prettier/prettier': 'off',
+			'sos/changelog': 'error',
 		},
 	},
 ]);

@@ -1,4 +1,6 @@
+import { changelogLanguage } from './languages/changelog/changelog.mjs';
 import { textLanguage } from './languages/text.mjs';
+import { changelogRule } from './rules/changelog.mjs';
 
 const plugin = {
 	meta: {
@@ -7,8 +9,11 @@ const plugin = {
 	},
 	languages: {
 		text: textLanguage,
+		changelog: changelogLanguage,
 	},
-	rules: {},
+	rules: {
+		changelog: changelogRule,
+	},
 	configs: {},
 };
 
