@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - Add support for linting `.sh` and `Dockerfile` files
+- Add `sos-prettier` command for linting non-JS projects (using `npx sos-prettier --package=@signageos/codestyle`)
 
 ### Fixed
 - Remove `docker-compose.yml` from ignored files

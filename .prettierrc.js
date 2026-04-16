@@ -1,6 +1,8 @@
 /** @type {import("prettier").Config} */
 const config = {
-	plugins: ['prettier-plugin-sh'],
+	plugins: [
+		require.resolve('prettier-plugin-sh'), // plugin path has to be resolved here, because it can't be resolved in projects where @signageos/codestyle is not installed directly (such as running sos-prettier command)
+	],
 	semi: true,
 	singleQuote: true,
 	jsxSingleQuote: true,
