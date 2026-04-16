@@ -152,7 +152,7 @@ export default defineConfig([
 		},
 	},
 	{
-		files: ['**/*.yml', '**/*.yaml', '**/*.html', '**/*.md'],
+		files: ['**/*.yml', '**/*.yaml', '**/*.html', '**/*.md', '**/*.sh', 'Dockerfile'],
 		language: 'sos/text',
 		plugins: {
 			sos: eslintPluginSos,

@@ -1,5 +1,6 @@
 /** @type {import("prettier").Config} */
 const config = {
+	plugins: ['prettier-plugin-sh'],
 	semi: true,
 	singleQuote: true,
 	jsxSingleQuote: true,

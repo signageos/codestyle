@@ -3,6 +3,8 @@ dist/*
 node_modules/*
 package-lock.json
 
+CHANGELOG.md
+
 # IDE
 .idea
 .vscode
