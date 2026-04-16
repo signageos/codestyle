@@ -10,17 +10,7 @@ import eslintPluginSos from './plugins/sos/index.mjs';
 export default defineConfig([
 	// Base ignore patterns
 	{
-		ignores: [
-			'.prettierignore',
-			'*.min.js',
-			'CHANGELOG.md',
-			'coverage/*',
-			'dist/**/*',
-			'docker-compose.yml',
-			'helm/*',
-			'node_modules/',
-			'patches/*',
-		],
+		ignores: ['.prettierignore', '*.min.js', 'CHANGELOG.md', 'coverage/*', 'dist/**/*', 'helm/*', 'node_modules/', 'patches/*'],
 	},
 	js.configs.recommended,
 	tseslint.configs.recommended,
@@ -162,7 +152,7 @@ export default defineConfig([
 		},
 	},
 	{
-		files: ['**/*.yml', '**/*.yaml', '**/*.html', '**/*.md'],
+		files: ['**/*.yml', '**/*.yaml', '**/*.html', '**/*.md', '**/*.sh', 'Dockerfile'],
 		language: 'sos/text',
 		plugins: {
 			sos: eslintPluginSos,

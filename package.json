@@ -8,6 +8,9 @@
 		"node": ">=18",
 		"npm": ">=9"
 	},
+	"bin": {
+		"sos-prettier": "./bin/sos-prettier.sh"
+	},
 	"scripts": {
 		"clean-build": "echo No build needed",
 		"test": "echo No tests needed",
@@ -25,7 +28,8 @@
 		"eslint-plugin-mocha": "11.2.0",
 		"eslint-plugin-prettier": "5.5.5",
 		"eslint-plugin-unused-imports": "4.4.1",
-		"prettier": "3.5.3",
+		"prettier": "3.8.3",
+		"prettier-plugin-sh": "0.18.1",
 		"typescript-eslint": "8.57.2"
 	},
 	"devDependencies": {
