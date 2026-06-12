@@ -8,4 +8,13 @@ import baseConfig from './eslint.config.public.mjs';
 */
 // TODO: export eslint.config.base.mjs instead in the next major release
 
-export default defineConfig([baseConfig]);
+export default defineConfig([
+	baseConfig,
+	...(process.env.DISABLE_FIXTURES
+		? [
+				{
+					ignores: ['tests/**/fixtures/**'],
+				},
+			]
+		: []),
+]);

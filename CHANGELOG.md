@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-+ Added sos/changelog language and rules
+- Added sos/changelog language and rules
 
 ## [2.3.0] - 2026-04-16
 ### Added

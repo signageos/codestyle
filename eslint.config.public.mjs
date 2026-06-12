@@ -1,13 +1,16 @@
 // eslint.config.public.js
 import { defineConfig } from 'eslint/config';
+import { includeIgnoreFile } from '@eslint/compat';
 import js from '@eslint/js';
 import * as tseslint from 'typescript-eslint';
 import eslintPluginPrettier from 'eslint-plugin-prettier';
 import eslintPluginUnusedImports from 'eslint-plugin-unused-imports';
 import mochaPlugin from 'eslint-plugin-mocha';
 import eslintPluginSos from './plugins/sos/index.mjs';
+import path from 'node:path';
 
 export default defineConfig([
+	includeIgnoreFile(path.resolve(process.cwd(), '.gitignore')),
 	// Base ignore patterns
 	{
 		ignores: ['.prettierignore', '*.min.js', 'coverage/*', 'dist/**/*', 'helm/*', 'node_modules/', 'patches/*'],
@@ -170,7 +173,7 @@ export default defineConfig([
 		},
 	},
 	{
-		files: ['CHANGELOG.md'],
+		files: ['**/CHANGELOG.md'],
 		language: 'sos/changelog',
 		plugins: {
 			sos: eslintPluginSos,

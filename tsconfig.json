@@ -1,7 +1,8 @@
 {
 	"extends": "./tsconfig-strict.json",
 	"compilerOptions": {
-		"noEmit": true
+		"noEmit": true,
+		"types": ["node", "mocha"]
 	},
-	"include": [".prettierrc.d.ts", ".prettierrc.js", "**/.*.js", "**/*.mjs", "*.js", "*.d.ts"]
+	"include": [".prettierrc.d.ts", ".prettierrc.js", "**/.*.js", "**/*.mjs", "*.js", "*.d.ts", "tests/**/*.ts"]
 }

@@ -9,9 +9,7 @@ import semver from 'semver';
  */
 
 const SECTION_REGEX = /^#*[\t ](.+)[\t ]*$/;
-const RELEASED_ENTRY_REGEX = /^\t*- .+$/;
-const UNRELEASED_ENTRY_REGEX = /^\t*\+ .+$/;
-const WRONG_PREFIX_REGEX = /^(\t*)([-+]) (.+)$/;
+const ENTRY_REGEX = /^\t*- .+$/;
 
 const VERSION_NAME_REGEX = /\[(.+)] - (.+)/;
 
@@ -70,35 +68,13 @@ export const changelogRule = {
 					return;
 				}
 
-				const expectedRegex = isUnreleased ? UNRELEASED_ENTRY_REGEX : RELEASED_ENTRY_REGEX;
-				if (expectedRegex.test(node.item)) {
+				if (ENTRY_REGEX.test(node.item)) {
 					return;
 				}
 
-				const wrongPrefixMatch = WRONG_PREFIX_REGEX.exec(node.item);
-				if (isUnreleased && wrongPrefixMatch?.[2] === '-') {
-					context.report({
-						node,
-						message: 'Unreleased entries have to start with "+ " (use "-" only for released versions)',
-						fix: (fixer) => {
-							const [, indent, , rest] = wrongPrefixMatch;
-							return fixer.replaceText(node, `${indent}+ ${rest}`);
-						},
-					});
-					return;
-				}
-				if (!isUnreleased && wrongPrefixMatch?.[2] === '+') {
-					context.report({
-						node,
-						message: 'Released entries have to start with "- ". Did you mean to add this to [Unreleased]?',
-					});
-					return;
-				}
-
-				const expectedPrefix = isUnreleased ? '+' : '-';
 				context.report({
 					node,
-					message: `Changelog entries have to start with "${expectedPrefix} " with optional tab indentation`,
+					message: 'Changelog entries have to start with "- " with optional tab indentation',
 				});
 			},
 

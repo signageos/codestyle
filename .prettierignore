@@ -7,3 +7,5 @@ package-lock.json
 # IDE
 .idea
 .vscode
+
+CHANGELOG.md
