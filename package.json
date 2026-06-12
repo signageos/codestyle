@@ -12,7 +12,7 @@
 		"sos-prettier": "./bin/sos-prettier.sh"
 	},
 	"scripts": {
-		"clean-build": "echo No build needed",
+		"clean-build": "cat eslint.config.public.mjs > eslint.config.mjs",
 		"test": "echo No tests needed",
 		"lint": "eslint",
 		"lint:prettier": "prettier  \"**/*.+(ts|tsx|json|js)\" --check",
