@@ -1,172 +1,20 @@
-// eslint.config.js
 import { defineConfig } from 'eslint/config';
-import js from '@eslint/js';
-import * as tseslint from 'typescript-eslint';
-import eslintPluginPrettier from 'eslint-plugin-prettier';
-import eslintPluginUnusedImports from 'eslint-plugin-unused-imports';
-import mochaPlugin from 'eslint-plugin-mocha';
-import eslintPluginSos from './plugins/sos/index.mjs';
+import baseConfig from './eslint.config.public.mjs';
+
+/* 
+  WARNING:
+  This is not the config, which gets published in the package, it is replaced in the build step before publish (with eslint.config.public.mjs)
+  This is to allow project specific settings without a breaking change
+*/
+// TODO: export eslint.config.base.mjs instead in the next major release
 
 export default defineConfig([
-	// Base ignore patterns
-	{
-		ignores: ['.prettierignore', '*.min.js', 'CHANGELOG.md', 'coverage/*', 'dist/**/*', 'helm/*', 'node_modules/', 'patches/*'],
-	},
-	js.configs.recommended,
-	tseslint.configs.recommended,
-	{
-		files: ['**/*.json'],
-		plugins: {
-			prettier: eslintPluginPrettier,
-		},
-		rules: {
-			'@typescript-eslint/no-unused-expressions': 'off',
-			'prettier/prettier': 'error',
-		},
-	},
-	{
-		files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.mjs'],
-		languageOptions: {
-			ecmaVersion: 'latest',
-			sourceType: 'module',
-			parser: tseslint.parser,
-			parserOptions: {
-				project: ['./tsconfig.json'],
-				tsconfigRootDir: process.cwd(),
-			},
-			globals: {
-				browser: 'readonly',
-				node: 'readonly',
-			},
-		},
-		plugins: {
-			'@typescript-eslint': tseslint.plugin,
-			'eslint-plugin-mocha': mochaPlugin,
-			'unused-imports': eslintPluginUnusedImports,
-			prettier: eslintPluginPrettier,
-		},
-		rules: {
-			'@typescript-eslint/dot-notation': 'error',
-			'@typescript-eslint/member-ordering': [
-				'error',
+	baseConfig,
+	...(process.env.DISABLE_FIXTURES
+		? [
 				{
-					default: [
-						'public-field',
-						'private-field',
-						'field',
-						'constructor',
-						'public-accessor',
-						'private-accessor',
-						'accessor',
-						'public-method',
-						'private-method',
-						'method',
-					],
+					ignores: ['tests/**/fixtures/**'],
 				},
-			],
-			'@typescript-eslint/no-empty-function': 'error',
-			'@typescript-eslint/no-empty-object-type': ['error', { allowInterfaces: 'with-single-extends' }],
-			'@typescript-eslint/no-explicit-any': 'off',
-			'@typescript-eslint/no-floating-promises': 'warn',
-			'@typescript-eslint/no-inferrable-types': 'off',
-			'@typescript-eslint/no-misused-spread': 'error',
-			'@typescript-eslint/no-namespace': ['error', { allowDeclarations: true }],
-			'@typescript-eslint/no-require-imports': 'off',
-			'@typescript-eslint/no-shadow': ['error', { hoist: 'all' }],
-			'@typescript-eslint/no-unused-expressions': 'error',
-			'@typescript-eslint/no-unused-vars': [
-				'error',
-				{ argsIgnorePattern: '^_', destructuredArrayIgnorePattern: '^_', ignoreRestSiblings: true, varsIgnorePattern: '^_' },
-			],
-			'@typescript-eslint/no-var-requires': 'off',
-			'@typescript-eslint/prefer-enum-initializers': 'error',
-			'@typescript-eslint/prefer-literal-enum-member': 'error',
-			'@typescript-eslint/prefer-namespace-keyword': 'error',
-			'@typescript-eslint/prefer-optional-chain': 'error',
-			'@typescript-eslint/quotes': 'off',
-			'@typescript-eslint/typedef': 'off',
-			'capitalized-comments': 'off',
-			'comma-dangle': 'off',
-			'default-case': 'error',
-			'dot-notation': 'off',
-			'id-denylist': ['off', 'any', 'Number', 'number', 'String', 'string', 'Boolean', 'boolean', 'Undefined', 'undefined'],
-			'id-match': 'off',
-			'max-len': 'off',
-			'no-bitwise': 'error',
-			'no-caller': 'error',
-			'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
-			'no-constant-condition': ['error', { checkLoops: 'allExceptWhileTrue' }],
-			'no-debugger': 'error',
-			'no-duplicate-imports': 'error',
-			'no-empty-function': 'off',
-			'no-empty': 'error',
-			'no-eval': 'error',
-			'no-fallthrough': 'off',
-			'no-new-wrappers': 'error',
-			'no-prototype-builtins': 'off', // false positives with should(...).hasOwnProperty()
-			'no-undef': 'off',
-			'no-underscore-dangle': 'off',
-			'no-unused-expressions': 'off',
-			'no-unused-labels': 'error',
-			'no-var': 'error',
-			'prettier/prettier': ['error'],
-			'unused-imports/no-unused-imports': 'error',
-			'unused-imports/no-unused-vars': 'off',
-			curly: 'error',
-			eqeqeq: ['error', 'smart'],
-			indent: 'off',
-			radix: 'off',
-		},
-	},
-	{
-		files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.mjs'],
-		...mochaPlugin.configs.recommended,
-	},
-	{
-		files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.mjs'],
-		rules: {
-			'mocha/consistent-interface': 'off',
-			'mocha/consistent-spacing-between-blocks': 'off', // this clashes with prettier
-			'mocha/handle-done-callback': 'off',
-			'mocha/max-top-level-suites': 'warn',
-			'mocha/no-async-suite': 'error',
-			'mocha/no-empty-title': 'error',
-			'mocha/no-exclusive-tests': 'warn',
-			'mocha/no-exports': 'warn',
-			'mocha/no-global-tests': 'error',
-			'mocha/no-hooks-for-single-case': 'off',
-			'mocha/no-hooks': 'off',
-			'mocha/no-identical-title': 'error',
-			'mocha/no-mocha-arrows': 'error',
-			'mocha/no-nested-tests': 'error',
-			'mocha/no-pending-tests': 'warn',
-			'mocha/no-return-and-callback': 'error',
-			'mocha/no-return-from-async': 'off',
-			'mocha/no-setup-in-describe': 'off',
-			'mocha/no-sibling-hooks': 'error',
-			'mocha/no-synchronous-tests': 'off',
-			'mocha/no-top-level-hooks': 'error',
-			'mocha/prefer-arrow-callback': 'off',
-			'mocha/valid-suite-title': 'off',
-			'mocha/valid-test-title': 'error',
-		},
-	},
-	{
-		files: ['**/*.yml', '**/*.yaml', '**/*.html', '**/*.md', '**/*.sh', 'Dockerfile'],
-		language: 'sos/text',
-		plugins: {
-			sos: eslintPluginSos,
-			prettier: eslintPluginPrettier,
-		},
-		rules: {
-			'no-irregular-whitespace': 'off',
-			'prettier/prettier': 'error',
-		},
-	},
-	{
-		files: ['**/package.json'],
-		rules: {
-			'no-dupe-keys': 'off',
-		},
-	},
+			]
+		: []),
 ]);

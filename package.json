@@ -12,14 +12,14 @@
 		"sos-prettier": "./bin/sos-prettier.sh"
 	},
 	"scripts": {
-		"clean-build": "echo No build needed",
-		"test": "echo No tests needed",
-		"lint": "eslint",
-		"lint:prettier": "prettier  \"**/*.+(ts|tsx|json|js)\" --check",
-		"lint:prettier:fix": "prettier  \"**/*.+(ts|tsx|json|js)\" --write",
-		"check": "echo No checks needed"
+		"clean-build": "cat eslint.config.public.mjs > eslint.config.mjs",
+		"test": "mocha \"tests/**/*.test.mjs\"",
+		"lint": "DISABLE_FIXTURES=1 eslint",
+		"check": "echo No checks needed",
+		"check-types": "tsc --noEmit"
 	},
 	"dependencies": {
+		"@eslint/compat": "^2.1.0",
 		"@eslint/js": "9.39.4",
 		"@typescript-eslint/eslint-plugin": "8.57.2",
 		"@typescript-eslint/parser": "8.57.2",
@@ -30,9 +30,13 @@
 		"eslint-plugin-unused-imports": "4.4.1",
 		"prettier": "3.8.3",
 		"prettier-plugin-sh": "0.18.1",
+		"semver": "7.7.4",
 		"typescript-eslint": "8.57.2"
 	},
 	"devDependencies": {
-		"@types/node": "25.5.0"
+		"@types/mocha": "^10.0.10",
+		"@types/node": "25.5.0",
+		"@types/semver": "7.7.1",
+		"mocha": "11.7.6"
 	}
 }

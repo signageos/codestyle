@@ -3,12 +3,7 @@ include:
     file: '/pipelines/ts-lib-public.yaml'
     ref: master
 
-test:general:
+test:format:check:
   stage: test
   script:
-    - echo "No general tests needed for codestyle library"
-
-test:types:
-  stage: test
-  script:
-    - echo "No type checking needed for codestyle library"
+    - echo "Already covered by the lint job"
