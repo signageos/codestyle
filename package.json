@@ -21,6 +21,7 @@
 	"dependencies": {
 		"@eslint/compat": "^2.1.0",
 		"@eslint/js": "9.39.4",
+		"@signageos/changelog": "0.1.1",
 		"@typescript-eslint/eslint-plugin": "8.57.2",
 		"@typescript-eslint/parser": "8.57.2",
 		"eslint": "9.39.4",
@@ -30,13 +31,11 @@
 		"eslint-plugin-unused-imports": "4.4.1",
 		"prettier": "3.8.3",
 		"prettier-plugin-sh": "0.18.1",
-		"semver": "7.7.4",
 		"typescript-eslint": "8.57.2"
 	},
 	"devDependencies": {
 		"@types/mocha": "^10.0.10",
 		"@types/node": "25.5.0",
-		"@types/semver": "7.7.1",
 		"mocha": "11.7.6"
 	}
 }
