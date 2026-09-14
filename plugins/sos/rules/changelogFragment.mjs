@@ -1,4 +1,5 @@
 import { validateSections } from '@signageos/changelog';
+import { DEFAULT_ENTRY_PREFIXES, checkEntryPrefixesInSections } from './changelogEntryPrefixes.mjs';
 
 /**
  * @typedef {import("../languages/changelog/fragment.mjs").ChangelogFragmentRoot} ChangelogFragmentRoot
@@ -24,6 +25,8 @@ export const changelogFragmentRule = {
 	create: function (context) {
 		// @ts-expect-error context.options[0] is not typed properly
 		const allowedSections = context.options[0]?.allowedSections;
+		// @ts-expect-error context.options[0] is not typed properly
+		const entryPrefixes = context.options[0]?.entryPrefixes ?? DEFAULT_ENTRY_PREFIXES;
 
 		return {
 			/** @param {ChangelogFragmentRoot} node */
@@ -38,6 +41,10 @@ export const changelogFragmentRule = {
 						message: diagnostic.message,
 						fix: fix ? (fixer) => fixer.replaceTextRange(fix.range, fix.text) : undefined,
 					});
+				}
+
+				for (const diagnostic of checkEntryPrefixesInSections(node.sections, entryPrefixes)) {
+					context.report(diagnostic);
 				}
 			},
 		};

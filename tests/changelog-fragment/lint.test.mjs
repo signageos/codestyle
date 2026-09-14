@@ -23,7 +23,7 @@ const expectedFailures = {
 	'empty-section': 'Section "Added" has no entries.',
 	'indented-section': "Sections can't be indented",
 	'irregular-whitespace': 'Irregular whitespace',
-
+	'missing-entry-prefix': 'Changelog entries have to start with one of the allowed prefixes: (public), (internal)',
 	'version-heading': 'Parsing error: Version "[1.0.0] - 2026-05-05" is not allowed in a section fragment.',
 	'entry-outside-section': 'Parsing error: Entry "- (public) Entry with no section" is not part of any section.',
 };

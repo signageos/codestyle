@@ -6,15 +6,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.1.0] - 2026-05-05
 ### Added
-- New endpoint for foo
+- (public) New endpoint for foo
 
 ### Fixed
-- Race condition in bar
+- (internal) Race condition in bar
 
 ## [1.0.0] - 2026-04-15
 ### Changed
-- Refactored core
+- (public) Refactored core
 
 ## [0.1.0] - 2026-03-01
 ### Added
-- Initial public release
+- (public) Initial public release
