@@ -183,4 +183,15 @@ export default defineConfig([
 			'sos/changelog': 'error',
 		},
 	},
+	{
+		files: ['**/changelog/*.md'],
+		language: 'sos/changelog-fragment',
+		plugins: {
+			sos: eslintPluginSos,
+		},
+		rules: {
+			'prettier/prettier': 'off',
+			'sos/changelog-fragment': 'error',
+		},
+	},
 ]);
