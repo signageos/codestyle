@@ -9,6 +9,13 @@ Entries should be short and human-readable; for longer entries, use an indented 
 `Changed` and `Removed` entries should be used only for breaking changes to the outward-facing API.
 
 ## [Unreleased]
+### Added
+- (public) `sos/changelog` rule requires top-level entries to start with an entry prefix (`(public)` or `(internal)` by default, configurable via `entryPrefixes`)
+- (public) `sos/changelog` rule requires the extended preamble with the entry guidelines
+- (public) `sos/changelog-fragment` language and rule for linting `changelog/*.md` fragment files
+
+### Fixed
+- (internal) Use `@signageos/changelog` for parsing and validating changelogs
 
 ## [2.4.0] - 2026-07-27
 ### Added
