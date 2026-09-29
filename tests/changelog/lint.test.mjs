@@ -28,6 +28,7 @@ const expectedFailures = {
 	'invalid-date': 'Invalid date',
 	'multi-version-bad-section': 'Invalid title name "Bogus"',
 	'entry-with-plus': 'Changelog entries have to start with "- " with optional tab indentation',
+	'missing-entry-prefix': 'Changelog entries have to start with one of the allowed prefixes: (public), (internal)',
 };
 
 /**

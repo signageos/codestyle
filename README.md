@@ -18,13 +18,16 @@ It checks:
 - **Sections** – section headings must be one of `Added`, `Fixed`, `Changed`, `Removed`, `Deprecated`, `Security`. Headings can't be
   indented.
 - **Entries** – entries in released versions must start with `- ` (auto-fixed for wrong prefixes where possible); entries under
-  `[Unreleased]` must start with `+ ` instead. Optional tab indentation is allowed for nesting.
+  `[Unreleased]` must start with `+ ` instead. Optional tab indentation is allowed for nesting. Top-level entries must also start with one
+  of the configured entry prefixes, e.g. `(public)`/`(internal)`.
 - **Whitespace** – flags irregular (double) whitespace, and requires a trailing empty line after the last entry in a section (auto-fixed).
 
 #### Options
 
 - `allowedSections` (`string[]`) – override the list of permitted section names. Defaults to
   `['Added', 'Fixed', 'Changed', 'Removed', 'Deprecated', 'Security']`.
+- `entryPrefixes` (`string[]`) – override the list of allowed entry prefixes. Defaults to `['(public)', '(internal)']`. Pass `[]` to disable
+  the check.
 
 ```js
 {
