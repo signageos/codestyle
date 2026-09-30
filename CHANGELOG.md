@@ -9,6 +9,8 @@ Entries should be short and human-readable; for longer entries, use an indented 
 `Changed` and `Removed` entries should be used only for breaking changes to the outward-facing API.
 
 ## [Unreleased]
+
+## [2.5.0] - 2026-09-30
 ### Added
 - (public) `sos/changelog` rule requires top-level entries to start with an entry prefix (`(public)` or `(internal)` by default, configurable via `entryPrefixes`)
 - (public) `sos/changelog` rule requires the extended preamble with the entry guidelines
