@@ -28,6 +28,7 @@ const expectedFailures = {
 	'invalid-date': 'Invalid date',
 	'multi-version-bad-section': 'Invalid title name "Bogus"',
 	'entry-with-plus': 'Changelog entries have to start with "- " with optional tab indentation',
+	'missing-entry-prefix': 'Changelog entries have to start with one of the allowed prefixes: (public), (internal)',
 };
 
 /**
@@ -48,27 +49,29 @@ const listFixtures = (subdir) =>
 const passFixtures = listFixtures('pass');
 const failFixtures = listFixtures('fail');
 
-describe('eslint fixtures', function () {
-	describe('pass', function () {
-		for (const name of passFixtures) {
-			it(`pass/${name}`, async function () {
-				const file = path.join(fixturesDir, 'pass', name, 'CHANGELOG.md');
-				const [result = never] = await eslint.lintFiles([file]);
-				assert.equal(result.errorCount + result.warningCount, 0, `Expected no lint findings, got:\n${formatMessages(result)}`);
-			});
-		}
-	});
+describe('sos/changelog', function () {
+	describe('eslint fixtures', function () {
+		describe('pass', function () {
+			for (const name of passFixtures) {
+				it(`pass/${name}`, async function () {
+					const file = path.join(fixturesDir, 'pass', name, 'CHANGELOG.md');
+					const [result = never] = await eslint.lintFiles([file]);
+					assert.equal(result.errorCount + result.warningCount, 0, `Expected no lint findings, got:\n${formatMessages(result)}`);
+				});
+			}
+		});
 
-	describe('fail', function () {
-		for (const name of failFixtures) {
-			const expected = expectedFailures[name];
-			it(`fail/${name} reports "${expected}"`, async function () {
-				assert.ok(expected, `No expected message defined for fixture "${name}"`);
-				const file = path.join(fixturesDir, 'fail', name, 'CHANGELOG.md');
-				const [result = never] = await eslint.lintFiles([file]);
-				const matched = result.messages.filter((m) => m.message === expected);
-				assert.ok(matched.length > 0, `Expected message "${expected}" to fire. All findings:\n${formatMessages(result)}`);
-			});
-		}
+		describe('fail', function () {
+			for (const name of failFixtures) {
+				const expected = expectedFailures[name];
+				it(`fail/${name} reports "${expected}"`, async function () {
+					assert.ok(expected, `No expected message defined for fixture "${name}"`);
+					const file = path.join(fixturesDir, 'fail', name, 'CHANGELOG.md');
+					const [result = never] = await eslint.lintFiles([file]);
+					const matched = result.messages.filter((m) => m.message === expected);
+					assert.ok(matched.length > 0, `Expected message "${expected}" to fire. All findings:\n${formatMessages(result)}`);
+				});
+			}
+		});
 	});
 });

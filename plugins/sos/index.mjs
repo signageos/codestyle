@@ -1,6 +1,8 @@
 import { changelogLanguage } from './languages/changelog/changelog.mjs';
+import { changelogFragmentLanguage } from './languages/changelog/fragment.mjs';
 import { textLanguage } from './languages/text.mjs';
 import { changelogRule } from './rules/changelog.mjs';
+import { changelogFragmentRule } from './rules/changelogFragment.mjs';
 
 const plugin = {
 	meta: {
@@ -10,9 +12,11 @@ const plugin = {
 	languages: {
 		text: textLanguage,
 		changelog: changelogLanguage,
+		'changelog-fragment': changelogFragmentLanguage,
 	},
 	rules: {
 		changelog: changelogRule,
+		'changelog-fragment': changelogFragmentRule,
 	},
 	configs: {},
 };

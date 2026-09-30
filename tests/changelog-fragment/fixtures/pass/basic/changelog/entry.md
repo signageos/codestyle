@@ -1,0 +1,2 @@
+### Added
+- (public) New feature
