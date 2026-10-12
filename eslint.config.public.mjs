@@ -180,7 +180,8 @@ export default defineConfig([
 		},
 		rules: {
 			'prettier/prettier': 'off',
-			'sos/changelog': 'error',
+			// the release strips entry prefixes, so released CHANGELOG.md entries have none
+			'sos/changelog': ['error', { entryPrefixes: [] }],
 		},
 	},
 	{

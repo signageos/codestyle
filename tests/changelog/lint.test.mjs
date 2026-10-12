@@ -15,6 +15,17 @@ const eslint = new ESLint({
 	ignore: false,
 });
 
+const eslintWithEntryPrefixes = new ESLint({
+	cwd: repoRoot,
+	ignore: false,
+	overrideConfig: {
+		files: ['**/CHANGELOG.md'],
+		rules: {
+			'sos/changelog': ['error', { entryPrefixes: ['(public)', '(internal)'] }],
+		},
+	},
+});
+
 /** @type {Record<string, string>} */
 const expectedFailures = {
 	'incorrect-preamble': 'Incorrect preamble',
@@ -67,7 +78,8 @@ describe('sos/changelog', function () {
 				it(`fail/${name} reports "${expected}"`, async function () {
 					assert.ok(expected, `No expected message defined for fixture "${name}"`);
 					const file = path.join(fixturesDir, 'fail', name, 'CHANGELOG.md');
-					const [result = never] = await eslint.lintFiles([file]);
+					const linter = name === 'missing-entry-prefix' ? eslintWithEntryPrefixes : eslint;
+					const [result = never] = await linter.lintFiles([file]);
 					const matched = result.messages.filter((m) => m.message === expected);
 					assert.ok(matched.length > 0, `Expected message "${expected}" to fire. All findings:\n${formatMessages(result)}`);
 				});
