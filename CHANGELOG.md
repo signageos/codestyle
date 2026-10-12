@@ -10,6 +10,10 @@ Entries should be short and human-readable; for longer entries, use an indented 
 
 ## [Unreleased]
 
+## [2.5.1] - 2026-10-12
+### Fixed
+- (public) The distributed ESLint config no longer requires entry prefixes in `CHANGELOG.md`, because the release strips them.
+
 ## [2.5.0] - 2026-09-30
 ### Added
 - (public) `sos/changelog` rule requires top-level entries to start with an entry prefix (`(public)` or `(internal)` by default, configurable via `entryPrefixes`)
@@ -17,7 +21,7 @@ Entries should be short and human-readable; for longer entries, use an indented 
 - (public) `sos/changelog-fragment` language and rule for linting `changelog/*.md` fragment files
 
 ### Fixed
-- (internal) Use `@signageos/changelog` for parsing and validating changelogs
+- Use `@signageos/changelog` for parsing and validating changelogs
 
 ## [2.4.0] - 2026-07-27
 ### Added
@@ -114,8 +118,8 @@ Entries should be short and human-readable; for longer entries, use an indented 
 
 ## [0.2.0] - 2024-01-23
 ### Fixed
-- (internal) Fix eslint linting in the repo
-- (internal) Fix type checking in the repo
+- Fix eslint linting in the repo
+- Fix type checking in the repo
 - (public) Disable duplicit rules
 - (public) Disable no-redeclare rule
 - (public) Allow class member functions without explicit type definition
@@ -125,9 +129,9 @@ Entries should be short and human-readable; for longer entries, use an indented 
 
 ## [0.1.1] - 2023-12-14
 ### Fixed
-- (internal) Fixed registry url
+- Fixed registry url
 - (public) Updated eslint and prettier
 
 ## [0.1.0] - 2023-12-05
 ### Added
-- (internal) Standard release process
+- Standard release process
