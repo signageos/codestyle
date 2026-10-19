@@ -111,6 +111,7 @@ export default defineConfig([
 			'no-underscore-dangle': 'off',
 			'no-unused-expressions': 'off',
 			'no-unused-labels': 'error',
+			'no-useless-assignment': 'off',
 			'no-var': 'error',
 			'prettier/prettier': ['error'],
 			'unused-imports/no-unused-imports': 'error',

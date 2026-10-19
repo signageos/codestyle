@@ -5,7 +5,7 @@
 	"author": "signageOS.io <dev@signageos.io>",
 	"license": "MIT",
 	"engines": {
-		"node": ">=18",
+		"node": "^20.19.0 || ^22.13.0 || >=24",
 		"npm": ">=9"
 	},
 	"bin": {
@@ -20,22 +20,26 @@
 	},
 	"dependencies": {
 		"@eslint/compat": "^2.1.0",
-		"@eslint/js": "9.39.4",
+		"@eslint/js": "10.0.1",
 		"@signageos/changelog": "0.1.1",
-		"@typescript-eslint/eslint-plugin": "8.57.2",
-		"@typescript-eslint/parser": "8.57.2",
-		"eslint": "9.39.4",
+		"@typescript-eslint/eslint-plugin": "8.71.1",
+		"@typescript-eslint/parser": "8.71.1",
+		"eslint": "10.12.0",
 		"eslint-config-prettier": "10.1.8",
 		"eslint-plugin-mocha": "11.2.0",
 		"eslint-plugin-prettier": "5.5.5",
 		"eslint-plugin-unused-imports": "4.4.1",
 		"prettier": "3.8.3",
 		"prettier-plugin-sh": "0.18.1",
-		"typescript-eslint": "8.57.2"
+		"typescript-eslint": "8.71.1"
+	},
+	"peerDependencies": {
+		"typescript": "^6.0"
 	},
 	"devDependencies": {
 		"@types/mocha": "^10.0.10",
 		"@types/node": "25.5.0",
-		"mocha": "11.7.6"
+		"mocha": "11.7.6",
+		"typescript": "6.0.3"
 	}
 }

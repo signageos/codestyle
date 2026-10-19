@@ -2,6 +2,21 @@
 
 Code style for services
 
+## Requirements
+
+- ESLint 10 is bundled; Node.js `^20.19.0 || ^22.13.0 || >=24`.
+- TypeScript 6 (`peerDependencies.typescript: ^6.0`) installed in the project, as typed linting uses it. typescript-eslint does not support
+  TypeScript 7, which has no compiler API; to type-check with TypeScript 7, keep TypeScript 6 under the `typescript` name:
+
+  ```json
+  {
+  	"devDependencies": {
+  		"@typescript/native": "npm:typescript@^7.0.2",
+  		"typescript": "npm:@typescript/typescript6@^6.0.2"
+  	}
+  }
+  ```
+
 ## Rules
 
 ### `sos/changelog`
