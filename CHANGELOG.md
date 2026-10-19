@@ -10,6 +10,11 @@ Entries should be short and human-readable; for longer entries, use an indented 
 
 ## [Unreleased]
 
+## [3.0.0] - 2026-10-19
+### Changed
+- (public) Linting runs on ESLint 10 and requires TypeScript 6 installed in the project, as well as Node.js 20.19, 22.13 or 24 and newer.
+- (public) Linting now reports variables that are never assigned (`no-unassigned-vars`) and errors rethrown without their original `cause` (`preserve-caught-error`).
+
 ## [2.5.1] - 2026-10-12
 ### Fixed
 - (public) The distributed ESLint config no longer requires entry prefixes in `CHANGELOG.md`, because the release strips them.
