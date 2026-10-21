@@ -17,6 +17,12 @@ Code style for services
   }
   ```
 
+## Prettier
+
+Markdown tables in `docs/**/*.md` are printed compact (`| a | b |`) instead of padded to the column width, because padding wide tables in
+long documents more than doubles their size. Set the `markdownTables` option to `aligned` or `compact` in a project's prettier overrides to
+change it.
+
 ## Rules
 
 ### `sos/changelog`
