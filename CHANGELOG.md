@@ -10,6 +10,10 @@ Entries should be short and human-readable; for longer entries, use an indented 
 
 ## [Unreleased]
 
+## [3.1.0] - 2026-10-21
+### Added
+- (public) Markdown tables in `docs/` are formatted without column padding, which keeps wide tables in long documents readable and small.
+
 ## [3.0.0] - 2026-10-19
 ### Changed
 - (public) Linting runs on ESLint 10 and requires TypeScript 6 installed in the project, as well as Node.js 20.19, 22.13 or 24 and newer.
